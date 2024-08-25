@@ -84,19 +84,19 @@ The Car Wash Booking System is a user-friendly web application designed to strea
 
 ## Technologies Used
 
-- **Frontend:** React, Tailwind CSS, Axios
+- **Frontend:** React, Tailwind CSS, Axios, Typescript, Swiper
 - **Backend:** Node.js, Express.js, MongoDB, Mongoose, JWT
 - **Payment Gateway:** AAMARPAY
 - **Authentication:** JWT for token-based authentication
-- **State Management:** Redux, React Context API
+- **State Management:** Redux, React Context API, RTK Query
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/car-wash-booking-system.git
-   cd car-wash-booking-system
+   git clone https://github.com/ibnabdullah1/Car-Washing-System-Client.git
+   cd Car-Washing-System-Client
    ```
 
 2. Install dependencies:
@@ -174,11 +174,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 For any inquiries, please contact:
 
-- **Name:** Your Name
-- **Email:** your.email@example.com
-- **GitHub:** [yourusername](https://github.com/yourusername)
-
-```
-
-This `README.md` provides an overview of your project, instructions for setup, and detailed explanations of each feature. Make sure to customize it further to match your specific project setup and needs.
-```
+- **Name:** Arafat Hosen
+- **Email:** arfathossen541@gmail.com
+- **GitHub:** [ibnabdullah1](https://github.com/ibnabdullah1)
