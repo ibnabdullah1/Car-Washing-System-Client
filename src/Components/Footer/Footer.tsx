@@ -110,7 +110,7 @@ const Footer = () => {
               Subscribe to be the first one to know about updates. Enter your
               email
             </p>
-            <div className="justify-center my-3 flex-align-center">
+            <div className="justify-center my-3 flex items-center">
               <input
                 type="text"
                 className="px-4 py-[0.35rem] border  outline-none bg-transparent rounded-lg "
@@ -125,9 +125,10 @@ const Footer = () => {
         <p>
           Copyright © 2024{" "}
           <span className="text-primary cursor-pointer">
-            RealEstate Community
+            CarWashingSystem Community
           </span>
-          . All Rights Reserved || Designed By{" "}
+          .
+          <br className="md:hidden" /> All Rights Reserved || Designed By{" "}
           <a
             className="text-primary cursor-pointer"
             target="_blank"

@@ -1,4 +1,5 @@
 import Banner from "../../Components/Banner/Banner";
+import CTA from "../../Components/CTA/CTA";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 import WorkerOverview from "../../Components/WorkerOverview/WorkerOverview";
 import AboutUs from "../About/About";
@@ -13,6 +14,7 @@ const Home = () => {
       <WorkerOverview />
       <AboutUs />
       <Services />
+      <CTA />
       <Blogs />
       <Reviews />
       <NewsLetter />

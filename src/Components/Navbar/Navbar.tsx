@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { IoMdCall } from "react-icons/io";
 import { IoCloseOutline } from "react-icons/io5";
 import { LuSearch } from "react-icons/lu";
 import logo from "../../assets/logo.png";
+import Dropdown from "../Dropdown/MenuDropdown";
 import "./Navbar.css";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -47,7 +47,6 @@ const Navbar = () => {
     <header className="header font-questrial py-2 px-4 ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <img className="w-32" src={logo} alt="Logo" />
-
         <button onClick={toggleNav} className="">
           <FaBars className="text-xl lg:hidden flex text-primary" />
         </button>
@@ -55,7 +54,6 @@ const Navbar = () => {
           onClick={toggleNav}
           className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
         ></div>
-
         <nav className={`nav-menu ${isMenuOpen ? "open" : ""}`}>
           <div className="flex lg:hidden justify-between mb-5 pb-5 mt-6 border-b items-center border-secondary/20 mx-3">
             <div
@@ -182,10 +180,7 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <p className="lg:flex items-center gap-2 hidden font-semibold text-secondary">
-          <IoMdCall />
-          +123-456-789-10
-        </p>
+        <Dropdown />
       </div>
     </header>
   );

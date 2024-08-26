@@ -12,7 +12,7 @@ const NewsLetter = () => {
             </p>
           </div>
           <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
-            <form className="sm:flex" id="revue-form" target="_blank">
+            <form className="sm:flex gap-3" id="revue-form" target="_blank">
               <input
                 type="email"
                 autoComplete="email"
@@ -22,7 +22,7 @@ const NewsLetter = () => {
               />
               <button
                 type="submit"
-                className="mt-3 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-700 px-5 py-3 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-0 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0"
+                className="bg-blue/70 text-white px-4 rounded-md hover:bg-blue"
               >
                 Subscribe
               </button>

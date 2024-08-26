@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { RootState } from "../features/store";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:1000/api/",
+  baseUrl: import.meta.env.VITE_API_URL,
 
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {

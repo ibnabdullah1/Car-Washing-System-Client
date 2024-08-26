@@ -18,7 +18,7 @@
 }
 
 .btn-primary {
-  @apply bg-primary text-white hover:bg-[#f7751e] shadow-md shadow-primary/60;
+  @apply bg-primary text-white hover:bg-blue shadow-md shadow-primary/60;
 }
 .icon-box {
   @apply grid flex-shrink-0 rounded-full w-9 h-9 place-items-center hover:bg-slate-200  sm:cursor-pointer;
