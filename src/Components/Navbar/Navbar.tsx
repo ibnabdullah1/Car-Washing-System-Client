@@ -79,37 +79,16 @@ const Navbar = () => {
 
           <ul className="menu" onClick={handleSubMenuToggle}>
             <li className="menu-item">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
             <li className="menu-item">
-              <a href="#">About</a>
+              <a href="/about-us">About Us</a>
             </li>
-            <li
-              className={`menu-item menu-item-has-children ${
-                activeSubMenu === "shop" ? "active" : ""
-              }`}
-              data-id="shop"
-            >
-              <a href="#" data-toggle="sub-menu">
-                Shop <i className="plus"></i>
-              </a>
-              <ul
-                style={{
-                  maxHeight: `${activeSubMenu === "shop" ? "196px" : ""}`,
-                }}
-                className="sub-menu"
-              >
-                <li className="menu-item">
-                  <a href="#">Diagnostic Product</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Laboratory Product</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Surgical Product</a>
-                </li>
-              </ul>
+
+            <li className="menu-item">
+              <a href="/services">Services</a>
             </li>
+
             <li className="menu-item">
               <a href="#">Blog</a>
             </li>

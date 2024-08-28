@@ -5,7 +5,7 @@ import WorkerOverview from "../../Components/WorkerOverview/WorkerOverview";
 import AboutUs from "../About/About";
 import Blogs from "../Blog/Blogs";
 import Reviews from "../Reviews/Reviews";
-import Services from "../Services/Services";
+import FeaturedServices from "../Services/FeaturedServices";
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
       <Banner />
       <WorkerOverview />
       <AboutUs />
-      <Services />
+      <FeaturedServices />
       <CTA />
       <Blogs />
       <Reviews />

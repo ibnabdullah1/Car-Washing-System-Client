@@ -1,0 +1,22 @@
+.FeaturedAdsService .swiper-pagination {
+  margin-top: 20px;
+  position: relative !important;
+  text-align: left;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+}
+.FeaturedAdsService .swiper-pagination-bullet {
+  width: 3.5px;
+  height: 3.5px;
+  display: inline-block;
+  border-radius: 0%;
+  background: #1e69b8;
+  transition-duration: 0.5s;
+}
+.FeaturedAdsService .swiper-pagination-bullet-active {
+  background: #1e69b8;
+  height: 3.5px;
+  width: 50px;
+  border-radius: 0%;
+}

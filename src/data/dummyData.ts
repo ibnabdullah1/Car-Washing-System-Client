@@ -189,3 +189,58 @@ export const teamMembers = [
       "https://essential-addons.com/wp-content/uploads/2020/01/Team-Member-02-1.png",
   },
 ];
+
+export const vehiclesData = {
+  car: {
+    Toyota: ["Camry", "Corolla", "Yaris", "RAV4", "Prius"],
+    Honda: ["Civic", "Accord", "Fit", "CR-V", "Pilot"],
+    Ford: ["Focus", "Fiesta", "Mustang", "Explorer", "Escape"],
+    Chevrolet: ["Malibu", "Impala", "Camaro", "Tahoe", "Equinox"],
+    Nissan: ["Altima", "Sentra", "Maxima", "Rogue", "Murano"],
+    BMW: ["3 Series", "5 Series", "X3", "X5", "Z4"],
+    Mercedes: ["C-Class", "E-Class", "S-Class", "GLE", "GLA"],
+  },
+  motorcycle: {
+    Yamaha: ["YZF-R3", "MT-07", "FZ6R", "XSR900", "Bolt"],
+    Honda: ["CBR500R", "CB300R", "Africa Twin", "Gold Wing", "Rebel 500"],
+    Suzuki: [
+      "GSX-R600",
+      "V-Strom 650",
+      "SV650",
+      "DR-Z400SM",
+      "Boulevard M109R",
+    ],
+    Kawasaki: ["Ninja 400", "Z650", "Versys 650", "Vulcan S", "KLX250"],
+    HarleyDavidson: [
+      "Iron 883",
+      "Street 750",
+      "Fat Bob",
+      "Road King",
+      "Sportster S",
+    ],
+  },
+  truck: {
+    Ford: ["F-150", "Ranger", "Super Duty", "Maverick"],
+    Chevrolet: ["Silverado", "Colorado", "Avalanche"],
+    Ram: ["1500", "2500", "3500"],
+    Toyota: ["Tundra", "Tacoma"],
+    Nissan: ["Titan", "Frontier"],
+    GMC: ["Sierra 1500", "Canyon"],
+  },
+  suv: {
+    Toyota: ["Highlander", "4Runner", "Land Cruiser"],
+    Honda: ["Pilot", "Passport", "HR-V"],
+    Ford: ["Explorer", "Expedition", "Edge"],
+    Chevrolet: ["Tahoe", "Suburban", "Blazer"],
+    Nissan: ["Pathfinder", "Armada", "Kicks"],
+    Jeep: ["Grand Cherokee", "Wrangler", "Renegade"],
+  },
+  van: {
+    Toyota: ["Sienna"],
+    Honda: ["Odyssey"],
+    Ford: ["Transit", "E-Series", "Transit Connect"],
+    Chevrolet: ["Express", "City Express"],
+    Mercedes: ["Sprinter", "Metris"],
+    Nissan: ["NV200", "NV3500"],
+  },
+};

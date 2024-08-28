@@ -13,7 +13,6 @@ import { RootState } from "../../redux/features/store";
 
 const Dropdown = () => {
   const user = useSelector((state: RootState) => selectCurrentUser(state));
-  console.log(user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // if (!user) {
@@ -37,7 +36,9 @@ const Dropdown = () => {
             alt={user?.name}
             className="size-10 rounded-full"
           />
-          <div className="absolute top-[3px] right-[-2px] size-3 rounded-full bg-green-500" />
+          {user && (
+            <div className="absolute top-[3px] right-[-2px] size-3 rounded-full bg-green-500" />
+          )}
         </div>
       </Menu.Button>
 

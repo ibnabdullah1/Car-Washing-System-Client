@@ -1,3 +1,4 @@
+import { TResponseRedux, TService } from "../../../types/global";
 import { baseApi } from "../../api/baseApi";
 
 const serviceApi = baseApi.injectEndpoints({
@@ -23,12 +24,20 @@ const serviceApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      transformResponse: (response: TResponseRedux<TService>) => {
+        return { data: response.data };
+      },
+      providesTags: ["singleServices"],
     }),
     deleteSingleService: builder.mutation({
       query: (id) => {
         return {
           url: `/services/${id}`,
           method: "DELETE",
+          // headers: {
+          //   "Content-Type": "application/json",
+          //   "Authorization": `Bearer ${}`
+          // }
         };
       },
       invalidatesTags: ["services"],
@@ -43,6 +52,16 @@ const serviceApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["services"],
     }),
+    addReviewToService: builder.mutation({
+      query: ({ id, data }) => {
+        return {
+          url: `/services/service-review/${id}`,
+          method: "PUT",
+          body: data,
+        };
+      },
+      invalidatesTags: ["singleServices"],
+    }),
   }),
 });
 
@@ -52,4 +71,5 @@ export const {
   useGetSingleServiceQuery,
   useUpdateServiceMutation,
   useDeleteSingleServiceMutation,
+  useAddReviewToServiceMutation,
 } = serviceApi;
