@@ -14,7 +14,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [signUp] = useSignUpMutation();
   const navigate = useNavigate();
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
@@ -57,7 +57,7 @@ const SignUp = () => {
         setLoading(false);
         toast.success("Registration successful!");
       }
-    } catch (error) {
+    } catch (error: any) {
       setLoading(false);
       toast.error(error?.message || "Registration failed");
     }

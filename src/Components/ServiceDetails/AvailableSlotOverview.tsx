@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { GoArrowSwitch, GoBookmark } from "react-icons/go";
 import { IoShareSocialOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToBooking } from "../../redux/features/booking/bookingSlice";
 import { useGetAllSlotsQuery } from "../../redux/features/slot/slotApi";
 import { TSlot } from "../../types/global";
 import BookingModal from "../Modal/BookingModal";
@@ -10,7 +13,11 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const { name, description, duration, price } = service;
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
+  const [selectedSlot, setSelectedSlot] = useState<TSlot | null>(null);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setSelectedSlot(null);
   }, [date, serviceId]);
@@ -24,14 +31,21 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
     setDate(event.target.value);
   };
 
-  function open() {
-    setIsOpen(true);
-  }
-
-  const handleBookService = (data) => {
-    const bookingServiceData = { ...data, serviceId, slotId: selectedSlot };
-    console.log(bookingServiceData);
+  const handleBookService = (data: any) => {
+    if (selectedSlot) {
+      const bookingServiceData = {
+        ...data,
+        serviceId,
+        slotId: selectedSlot._id,
+        startTime: selectedSlot.startTime,
+        endTime: selectedSlot.endTime,
+        servicePrice: price,
+      };
+      navigate("/checkout");
+      dispatch(addToBooking(bookingServiceData));
+    }
   };
+
   return (
     <div className="bg-[#f9f7f4] p-5 rounded-md lg:flex justify-between">
       <div>
@@ -53,12 +67,15 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
               {slotsData.data.map((slot: TSlot) => (
                 <button
                   key={slot._id}
+                  disabled={slot.isBooked === "booked"}
                   className={`slot-button text-xs px-3 py-[6px] rounded-full ${
-                    selectedSlot === slot._id
+                    selectedSlot?._id === slot._id
                       ? "bg-primary text-white"
+                      : slot.isBooked === "booked"
+                      ? "bg-gray-200 text-gray-400"
                       : "bg-gray-200"
                   }`}
-                  onClick={() => setSelectedSlot(slot._id)}
+                  onClick={() => setSelectedSlot(slot)}
                 >
                   {slot.startTime} - {slot.endTime}
                 </button>
@@ -89,7 +106,7 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
             <GoArrowSwitch />
           </button>
           <button
-            onClick={open}
+            onClick={() => setIsOpen(true)}
             disabled={!selectedSlot}
             className={`border rounded p-2 duration-300 ${
               selectedSlot

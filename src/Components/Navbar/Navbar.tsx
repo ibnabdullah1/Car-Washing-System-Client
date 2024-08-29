@@ -16,7 +16,7 @@ const Navbar = () => {
     document.body.classList.toggle("hidden-scrolling");
   };
 
-  const handleSubMenuToggle = (event) => {
+  const handleSubMenuToggle = (event: any) => {
     if (
       event.target.hasAttribute("data-toggle") &&
       window.innerWidth <= mediaSize
@@ -47,9 +47,7 @@ const Navbar = () => {
     <header className="header font-questrial py-2 px-4 ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <img className="w-32" src={logo} alt="Logo" />
-        <button onClick={toggleNav} className="">
-          <FaBars className="text-xl lg:hidden flex text-primary" />
-        </button>
+
         <div
           onClick={toggleNav}
           className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
@@ -90,77 +88,24 @@ const Navbar = () => {
             </li>
 
             <li className="menu-item">
-              <a href="#">Blog</a>
+              <a href="/faqs">FAQ</a>
             </li>
-            <li
-              className={`menu-item menu-item-has-children ${
-                activeSubMenu === "product" ? "active" : ""
-              }`}
-              data-id="product"
-            >
-              <a href="#" data-toggle="sub-menu">
-                Products <i className="plus"></i>
-              </a>
-              <ul
-                style={{
-                  maxHeight: `${activeSubMenu === "product" ? "196px" : ""}`,
-                }}
-                className="sub-menu"
-              >
-                <li className="menu-item">
-                  <a href="#">All collections</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Product Media</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Product Variants</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Product Countdown </a>
-                </li>
-              </ul>
-            </li>
-            <li
-              className={`menu-item menu-item-has-children ${
-                activeSubMenu === "pages" ? "active" : ""
-              }`}
-              data-id="pages"
-            >
-              <a href="#" data-toggle="sub-menu">
-                Pages <i className="plus"></i>
-              </a>
-              <ul
-                style={{
-                  maxHeight: `${activeSubMenu === "pages" ? "196px" : ""}`,
-                }}
-                className="sub-menu"
-              >
-                <li className="menu-item">
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#"> Refund Policy</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Terms of Service</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">Service</a>
-                </li>
-                <li className="menu-item">
-                  <a href="#">FAQ</a>
-                </li>
-              </ul>
+            <li className="menu-item">
+              <a href="/our-team">Our Team</a>
             </li>
 
             <li className="menu-item">
-              <a href="#">Contact</a>
+              <a href="/contact-us">Contact Us</a>
             </li>
           </ul>
         </nav>
-        <Dropdown />
-      </div>
+        <div className="flex items-center gap-3">
+          <Dropdown />
+          <button onClick={toggleNav} className="">
+            <FaBars className="text-3xl lg:hidden flex text-primary" />
+          </button>
+        </div>
+      </div>{" "}
     </header>
   );
 };

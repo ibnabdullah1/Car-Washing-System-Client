@@ -1,4 +1,5 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
@@ -13,8 +14,17 @@ const Reviews = () => {
     <div className=" pt-2 lg:px-10 px-10 ">
       <div className=" max-w-7xl mx-auto pt-2 pb-16 ">
         <div className="flex justify-between items-start">
-          <div className="text-center mb-8">
+          <div className="mb-8">
             <h2 className="heading">What Our Clients Say</h2>
+            <span>
+              <Link
+                to={"/dashboard/add-review"}
+                className="text-sm text-primary border-b border-b-primary"
+              >
+                {" "}
+                Send An Feedback
+              </Link>
+            </span>
           </div>
 
           <div className="flex justify-end gap-2 ">
@@ -26,6 +36,7 @@ const Reviews = () => {
             </button>
           </div>
         </div>
+
         <Swiper
           freeMode={true}
           navigation={{

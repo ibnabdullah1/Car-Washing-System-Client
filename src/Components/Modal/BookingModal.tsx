@@ -4,17 +4,17 @@ import { vehiclesData } from "../../data/dummyData";
 
 const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
   const [vehicleType, setVehicleType] = useState("car");
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedModel, setSelectedModel] = useState("");
+  const [vehicleBrand, setVehicleBrand] = useState("");
+  const [vehicleModel, setVehicleModel] = useState("");
   const [manufacturingYear, setManufacturingYear] = useState("");
 
   const handleBrandChange = (event: any) => {
-    setSelectedBrand(event.target.value);
-    setSelectedModel("");
+    setVehicleBrand(event.target.value);
+    setVehicleModel("");
   };
 
   const handleModelChange = (event: any) => {
-    setSelectedModel(event.target.value);
+    setVehicleModel(event.target.value);
   };
 
   const handleManufacturingYearChange = (event: any) => {
@@ -26,8 +26,8 @@ const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
 
     const bookingServiceData = {
       vehicleType,
-      selectedBrand,
-      selectedModel,
+      vehicleBrand,
+      vehicleModel,
       manufacturingYear,
     };
     setIsOpen(false);
@@ -77,7 +77,7 @@ const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
                     Vehicle Brand:
                   </label>
                   <select
-                    value={selectedBrand}
+                    value={vehicleBrand}
                     onChange={handleBrandChange}
                     required
                     className="border outline-none bg-transparent focus:border-primary placeholder:text-sm px-4 py-[7px] rounded  w-full"
@@ -100,16 +100,16 @@ const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
                   </label>
                   <select
                     required
-                    value={selectedModel}
+                    value={vehicleModel}
                     onChange={handleModelChange}
-                    disabled={!selectedBrand}
+                    disabled={!vehicleBrand}
                     className="border outline-none bg-transparent focus:border-primary placeholder:text-sm px-4 py-[7px] rounded w-full"
                   >
                     <option value="" disabled>
                       Select a model
                     </option>
-                    {selectedBrand &&
-                      vehiclesData[vehicleType][selectedBrand]?.map(
+                    {vehicleBrand &&
+                      vehiclesData[vehicleType][vehicleBrand]?.map(
                         (model: string) => (
                           <option key={model} value={model}>
                             {model}

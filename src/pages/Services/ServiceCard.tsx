@@ -26,7 +26,11 @@ const ServiceCard: React.FC<TService> = ({
         <h3 className="font-semibold text-2xl group-hover:text-primary duration-300 pb-2">
           {name}
         </h3>
-        <p className="  text-gray-600">{description}</p>
+        <p className="  text-gray-600">
+          {description.length > 40
+            ? description.slice(0, 40) + " more..."
+            : description}
+        </p>
 
         <div className="flex justify-between items-end">
           <div>

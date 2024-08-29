@@ -34,10 +34,6 @@ const serviceApi = baseApi.injectEndpoints({
         return {
           url: `/services/${id}`,
           method: "DELETE",
-          // headers: {
-          //   "Content-Type": "application/json",
-          //   "Authorization": `Bearer ${}`
-          // }
         };
       },
       invalidatesTags: ["services"],

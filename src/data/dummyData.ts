@@ -163,30 +163,33 @@ export const faqs = [
 export const teamMembers = [
   {
     id: 1,
-    name: "Wabz Braize",
-    role: "Front-end developer",
-    image: "https://unitedthemes.com/wp-content/uploads/2018/09/team2.jpg",
+    name: "Lucas Miles",
+    role: "Service Manager",
+    image: "https://autocare.dexignlab.com/xhtml/images/our-team/pic1.jpg",
   },
   {
     id: 2,
-    name: "Ethan Hunt",
-    role: "Backend  engineer",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJEABy10QnLp_dlJWIWx8KKu7rV9L6MBKUyeIkuGRMUqYu8VM3F_G4O0YtvXU1j4id_24&usqp=CAU",
+    name: "Sophia Reed",
+    role: "Customer Relations Specialist",
+    image: "https://autocare.dexignlab.com/xhtml/images/our-team/pic2.jpg",
   },
   {
     id: 3,
-    name: "Raven Kent",
-    role: "UI Designer",
-    image:
-      "https://powerpackelements.com/wp-content/uploads/2017/11/Team-memeber-01.png",
+    name: "Aiden Fox",
+    role: "Lead Technician",
+    image: "https://autocare.dexignlab.com/xhtml/images/our-team/pic3.jpg",
   },
   {
     id: 4,
-    name: "John Doe",
-    role: "Web developer",
-    image:
-      "https://essential-addons.com/wp-content/uploads/2020/01/Team-Member-02-1.png",
+    name: "Olivia Bennett",
+    role: "Detailing Specialist",
+    image: "https://autocare.dexignlab.com/xhtml/images/our-team/pic4.jpg",
+  },
+  {
+    id: 5,
+    name: "Noah Carter",
+    role: "Washing Specialist",
+    image: "https://autocare.dexignlab.com/xhtml/images/our-team/pic1.jpg",
   },
 ];
 

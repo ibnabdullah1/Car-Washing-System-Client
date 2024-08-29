@@ -3,9 +3,9 @@ import { baseApi } from "../../api/baseApi";
 
 const slotApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    addSlot: builder.mutation({
+    addServiceSlot: builder.mutation({
       query: (serviceData) => ({
-        url: "/slots/availability",
+        url: "/services/slots",
         method: "POST",
         body: serviceData,
       }),
@@ -30,11 +30,23 @@ const slotApi = baseApi.injectEndpoints({
       providesTags: ["slots"],
     }),
 
-    // headers: {
-    //   "Content-Type": "application/json",
-    //   "Authorization": `Bearer ${}`
-    // }
+    getSingleService: builder.query({
+      query: (id) => {
+        return {
+          url: `/slots/availability/${id}`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<TSlot>) => {
+        return { data: response.data };
+      },
+      providesTags: ["slots"],
+    }),
   }),
 });
 
-export const { useGetAllSlotsQuery, useAddSlotMutation } = slotApi;
+export const {
+  useGetAllSlotsQuery,
+  useGetSingleServiceQuery,
+  useAddServiceSlotMutation,
+} = slotApi;

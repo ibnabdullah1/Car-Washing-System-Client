@@ -6,7 +6,7 @@ import AboutUs from "./About";
 const AboutUsPage = () => {
   return (
     <div>
-      <LinkBanner ActiveLocation={"About Us"} />
+      <LinkBanner ActiveLocation={"About Us"} subLocation={undefined} />
       <AboutUs />
       <Services />
       <Reviews />

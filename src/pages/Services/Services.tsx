@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FiChevronsLeft, FiChevronsRight } from "react-icons/fi";
 import Loader from "../../Components/Common/Loader";
+import LinkBanner from "../../Components/LInkBanner/LinkBanner";
 import { useGetAllServicesQuery } from "../../redux/features/service/serviceApi";
 import { TService } from "../../types/global";
 import ServiceCard from "./ServiceCard";
@@ -47,63 +48,66 @@ const Services = () => {
   });
 
   return (
-    <div className="py-16 fixed-w">
-      <h2 className="heading text-center">Our Services</h2>
-      <ServiceFilter
-        setFilterTitle={setFilterTitle}
-        filterTitle={filterTitle}
-        setSortOption={setSortOption}
-        sortOption={sortOption}
-      />
+    <>
+      <LinkBanner ActiveLocation={"Services"} />
+      <div className="py-16 fixed-w">
+        <h2 className="heading text-center">Our Services</h2>
+        <ServiceFilter
+          setFilterTitle={setFilterTitle}
+          filterTitle={filterTitle}
+          setSortOption={setSortOption}
+          sortOption={sortOption}
+        />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {sortedServices.map((service: TService) => (
-          <ServiceCard key={service._id} {...service} />
-        ))}
-      </div>
-      {/* Pagination Component */}
-      {totalItems > itemsPerPage && (
-        <div className="flex-wrap md:flex justify-center py-16 gap-8">
-          <button
-            aria-label="Previous Page"
-            className={`${
-              currentPage === 0 ? "text-primary/70" : "text-primary"
-            } flex items-center justify-center w-8 h-8`}
-            onClick={handlePreviousPage}
-            disabled={currentPage === 0}
-          >
-            <FiChevronsLeft />
-          </button>
-          {Array.from({ length: numberOfPages }, (_, index) => (
-            <button
-              aria-label={`${index + 1}`}
-              className={`w-7 h-7 rounded-md text-sm ${
-                currentPage === index
-                  ? " bg-primary shadow shadow-primary text-white"
-                  : "hover:bg-primary/70 hover:text-white"
-              }`}
-              key={index}
-              onClick={() => handlePageClick(index)}
-            >
-              {index + 1}
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedServices.map((service: TService) => (
+            <ServiceCard key={service._id} {...service} />
           ))}
-          <button
-            aria-label="Next Page"
-            className={`${
-              currentPage === numberOfPages - 1
-                ? "text-primary/70"
-                : "text-primary"
-            } flex items-center justify-center w-8 h-8`}
-            onClick={handleNextPage}
-            disabled={currentPage === numberOfPages - 1}
-          >
-            <FiChevronsRight />
-          </button>
         </div>
-      )}
-      {/* Pagination Component */}
-    </div>
+        {/* Pagination Component */}
+        {totalItems > itemsPerPage && (
+          <div className="flex-wrap md:flex justify-center py-16 gap-8">
+            <button
+              aria-label="Previous Page"
+              className={`${
+                currentPage === 0 ? "text-primary/70" : "text-primary"
+              } flex items-center justify-center w-8 h-8`}
+              onClick={handlePreviousPage}
+              disabled={currentPage === 0}
+            >
+              <FiChevronsLeft />
+            </button>
+            {Array.from({ length: numberOfPages }, (_, index) => (
+              <button
+                aria-label={`${index + 1}`}
+                className={`w-7 h-7 rounded-md text-sm ${
+                  currentPage === index
+                    ? " bg-primary shadow shadow-primary text-white"
+                    : "hover:bg-primary/70 hover:text-white"
+                }`}
+                key={index}
+                onClick={() => handlePageClick(index)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              aria-label="Next Page"
+              className={`${
+                currentPage === numberOfPages - 1
+                  ? "text-primary/70"
+                  : "text-primary"
+              } flex items-center justify-center w-8 h-8`}
+              onClick={handleNextPage}
+              disabled={currentPage === numberOfPages - 1}
+            >
+              <FiChevronsRight />
+            </button>
+          </div>
+        )}
+        {/* Pagination Component */}
+      </div>
+    </>
   );
 };
 

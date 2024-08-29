@@ -32,32 +32,34 @@ const ServiceDetails = () => {
   const { name, image, _id, reviewsCollection } = service.data as TService;
 
   return (
-    <div className="p-5 max-w-7xl mx-auto">
+    <>
       <LinkBanner
         ActiveLocation={`${name}-Service-Details`}
         subLocation={"Services"}
       />
-      <AvailableSlotOverview service={service.data} serviceId={serviceId} />
-      <ServiceImages image={image} />
+      <div className="p-5 max-w-7xl mx-auto">
+        <AvailableSlotOverview service={service.data} serviceId={serviceId} />
+        <ServiceImages image={image} />
 
-      <div className="lg:grid lg:grid-cols-3 mt-4 gap-4 space-y-4 lg:space-y-0">
-        <div className="lg:col-span-2 space-y-4 w-full">
-          <ServiceDescription />
-          <CarWashServiceOverview />
-          <CarWashFeatures />
-          <ServiceVideo />
-          <ServiceLocationMap />
-          <ServiceReviews reviewsCollection={reviewsCollection} />
-          <SendAReview id={_id} />
-        </div>
-        <div className="lg:col-span-1">
-          <div className="lg:sticky lg:top-10">
-            <ServiceBuyRequest />
-            <FeaturedAdsService />
+        <div className="lg:grid lg:grid-cols-3 mt-4 gap-4 space-y-4 lg:space-y-0">
+          <div className="lg:col-span-2 space-y-4 w-full">
+            <ServiceDescription />
+            <CarWashServiceOverview />
+            <CarWashFeatures />
+            <ServiceVideo />
+            <ServiceLocationMap />
+            <ServiceReviews reviewsCollection={reviewsCollection} />
+            <SendAReview id={_id} />
+          </div>
+          <div className="lg:col-span-1">
+            <div className="lg:sticky lg:top-10">
+              <ServiceBuyRequest />
+              <FeaturedAdsService />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
