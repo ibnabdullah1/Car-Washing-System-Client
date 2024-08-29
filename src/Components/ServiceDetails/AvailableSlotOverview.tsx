@@ -5,7 +5,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToBooking } from "../../redux/features/booking/bookingSlice";
-import { useGetAllSlotsQuery } from "../../redux/features/slot/slotApi";
+import { useGetAvailableAllSlotsQuery } from "../../redux/features/slot/slotApi";
 import { TSlot } from "../../types/global";
 import BookingModal from "../Modal/BookingModal";
 
@@ -22,10 +22,11 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
     setSelectedSlot(null);
   }, [date, serviceId]);
 
-  const { data: slotsData, isLoading: isSlotLoading } = useGetAllSlotsQuery([
-    { name: "date", value: date },
-    { name: "serviceId", value: serviceId },
-  ]);
+  const { data: slotsData, isLoading: isSlotLoading } =
+    useGetAvailableAllSlotsQuery([
+      { name: "date", value: date },
+      { name: "serviceId", value: serviceId },
+    ]);
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDate(event.target.value);
@@ -62,17 +63,14 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
           <p className="text-gray-400">Available Slots:</p>
           {isSlotLoading ? (
             "Processing"
-          ) : slotsData && slotsData.data.length > 0 ? (
+          ) : slotsData && slotsData?.data?.length > 0 ? (
             <div className="flex items-center flex-wrap gap-3">
-              {slotsData.data.map((slot: TSlot) => (
+              {slotsData?.data?.map((slot: TSlot) => (
                 <button
                   key={slot._id}
-                  disabled={slot.isBooked === "booked"}
                   className={`slot-button text-xs px-3 py-[6px] rounded-full ${
                     selectedSlot?._id === slot._id
                       ? "bg-primary text-white"
-                      : slot.isBooked === "booked"
-                      ? "bg-gray-200 text-gray-400"
                       : "bg-gray-200"
                   }`}
                   onClick={() => setSelectedSlot(slot)}

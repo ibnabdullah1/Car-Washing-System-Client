@@ -15,6 +15,7 @@ import FAQs from "../pages/FAQ/FAQs";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import ManageServices from "../pages/ManageServices/ManageServices";
+import ManageSlots from "../pages/ManageSlots/ManageSlots";
 import MyBookings from "../pages/MyBookings/MyBookings";
 import Team from "../pages/OurTeam/OurTeam";
 import ServiceDetails from "../pages/Services/ServiceDetails";
@@ -139,6 +140,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddServiceSlot />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-slots",
+        element: (
+          <AdminRoute>
+            <ManageSlots />
           </AdminRoute>
         ),
       },

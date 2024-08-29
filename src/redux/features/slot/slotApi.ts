@@ -11,6 +11,18 @@ const slotApi = baseApi.injectEndpoints({
       }),
     }),
     getAllSlots: builder.query({
+      query: () => {
+        return {
+          url: "/slots",
+          method: "GET",
+        };
+      },
+      transformResponse: (response: TResponseRedux<TSlot>) => {
+        return { data: response.data };
+      },
+      providesTags: ["slots"],
+    }),
+    getAvailableAllSlots: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
         if (args) {
@@ -48,5 +60,6 @@ const slotApi = baseApi.injectEndpoints({
 export const {
   useGetAllSlotsQuery,
   useGetSingleServiceQuery,
+  useGetAvailableAllSlotsQuery,
   useAddServiceSlotMutation,
 } = slotApi;
