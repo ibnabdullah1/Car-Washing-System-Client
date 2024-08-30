@@ -9,17 +9,16 @@ const slotApi = baseApi.injectEndpoints({
         method: "POST",
         body: serviceData,
       }),
+      invalidatesTags: ["slots"],
     }),
     getAllSlots: builder.query({
-      query: () => {
-        return {
-          url: "/slots",
-          method: "GET",
-        };
-      },
-      transformResponse: (response: TResponseRedux<TSlot>) => {
-        return { data: response.data };
-      },
+      query: () => ({
+        url: "/slots",
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TSlot>) => ({
+        data: response.data,
+      }),
       providesTags: ["slots"],
     }),
     getAvailableAllSlots: builder.query({
@@ -36,23 +35,25 @@ const slotApi = baseApi.injectEndpoints({
           params: params,
         };
       },
-      transformResponse: (response: TResponseRedux<TSlot>) => {
-        return { data: response.data };
-      },
-      providesTags: ["slots"],
+      transformResponse: (response: TResponseRedux<TSlot>) => ({
+        data: response.data,
+      }),
     }),
-
     getSingleService: builder.query({
-      query: (id) => {
-        return {
-          url: `/slots/availability/${id}`,
-          method: "GET",
-        };
-      },
-      transformResponse: (response: TResponseRedux<TSlot>) => {
-        return { data: response.data };
-      },
-      providesTags: ["slots"],
+      query: (id) => ({
+        url: `/slots/availability/${id}`,
+        method: "GET",
+      }),
+      transformResponse: (response: TResponseRedux<TSlot>) => ({
+        data: response.data,
+      }),
+    }),
+    deleteSlot: builder.mutation({
+      query: (id) => ({
+        url: `/slots/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["slots"],
     }),
   }),
 });
@@ -62,4 +63,5 @@ export const {
   useGetSingleServiceQuery,
   useGetAvailableAllSlotsQuery,
   useAddServiceSlotMutation,
+  useDeleteSlotMutation,
 } = slotApi;

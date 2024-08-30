@@ -6,8 +6,10 @@ import {
 } from "react-icons/md";
 import Swal from "sweetalert2";
 import Loader from "../../Components/Common/Loader";
-import { useDeleteSingleServiceMutation } from "../../redux/features/service/serviceApi";
-import { useGetAllSlotsQuery } from "../../redux/features/slot/slotApi";
+import {
+  useDeleteSlotMutation,
+  useGetAllSlotsQuery,
+} from "../../redux/features/slot/slotApi";
 
 const ManageSlots = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -18,8 +20,7 @@ const ManageSlots = () => {
     isLoading,
     isError,
   } = useGetAllSlotsQuery(undefined);
-  const [deleteSingleService] = useDeleteSingleServiceMutation();
-
+  const [deleteSlot] = useDeleteSlotMutation();
   useEffect(() => {
     if (slotsData?.data) {
       setSlots(slotsData.data);
@@ -52,8 +53,10 @@ const ManageSlots = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await deleteSingleService(id);
-        toast.success("Service deleted successfully");
+        const res = await deleteSlot(id).unwrap();
+        if (res.success) {
+          toast.success(res.message);
+        }
       }
     });
   };
