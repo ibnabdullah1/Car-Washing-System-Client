@@ -8,6 +8,15 @@ const userApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getAllUsers: builder.query({
+      query: () => {
+        return {
+          url: `/users`,
+          method: "GET",
+        };
+      },
+      providesTags: ["users"],
+    }),
   }),
 });
 
