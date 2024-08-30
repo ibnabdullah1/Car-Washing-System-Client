@@ -17,6 +17,16 @@ const userApi = baseApi.injectEndpoints({
       },
       providesTags: ["users"],
     }),
+    updateUserRole: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/users`,
+          method: "PUT",
+          body: data,
+        };
+      },
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
