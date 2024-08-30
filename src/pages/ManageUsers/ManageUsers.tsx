@@ -54,7 +54,50 @@ const ManageUsers = () => {
               </th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {users?.data.map((user: any, i: any) => (
+              <tr key={user._id} className="p-4 bg-slate-100 border-b">
+                <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                  {i + 1}
+                </td>
+
+                <td className="px-6 py-3 text-left text-xs font-medium   tracking-wider">
+                  <div className="w-[150px]"> {user.name}</div>
+                </td>
+                <td className="px-6 py-3 text-left text-xs font-medium   tracking-wider">
+                  {user?.email}
+                </td>
+                <td className="px-6 py-3 text-left text-xs font-medium   tracking-wider">
+                  {user?.role}
+                </td>
+
+                <td className="px-6 py-3 text-left text-xs font-medium   tracking-wider">
+                  <button
+                    onClick={() => handleRoleAdmin(user._id)}
+                    disabled={user.role == "admin"}
+                    className={
+                      user.role == "admin"
+                        ? "text-xs px-3 py-[6px] font-medium  rounded-full bg-[#dfe2e0] text-gray-400 "
+                        : "text-xs px-3 py-[6px] font-medium  rounded-full bg-[#1a415390] hover:bg-[#1a4153] text-white duration-300"
+                    }
+                  >
+                    Admin
+                  </button>
+                </td>
+
+                <td className="px-6 py-3 text-left text-xs font-medium   tracking-wider">
+                  {role == "admin" && (
+                    <button
+                      onClick={() => handleDelete(user)}
+                      className="text-xs px-3 py-[6px] font-medium  rounded-full bg-[#f0151590] hover:bg-[#f01515] duration-300 text-white"
+                    >
+                      Delete
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
