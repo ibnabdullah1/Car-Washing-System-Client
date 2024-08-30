@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import Loader from "../../Components/Common/Loader";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
@@ -22,6 +23,17 @@ const ManageUsers = () => {
   if (isUserLoading) {
     return <Loader />;
   }
+
+  const handleRoleAdmin = async (id: string) => {
+    try {
+      const res = await userRoleUpdate({ id, role: "admin" }).unwrap();
+      if (res.success) {
+        toast.success(res.message);
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
 
   return (
     <div className="">
