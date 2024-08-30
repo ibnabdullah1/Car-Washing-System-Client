@@ -27,6 +27,15 @@ const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["users"],
     }),
+    deleteUser: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/users/${id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["users"],
+    }),
   }),
 });
 
@@ -34,4 +43,5 @@ export const {
   useGetUserQuery,
   useUpdateUserRoleMutation,
   useGetAllUsersQuery,
+  useDeleteUserMutation,
 } = userApi;

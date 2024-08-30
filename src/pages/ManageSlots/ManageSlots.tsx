@@ -18,7 +18,6 @@ const ManageSlots = () => {
     isLoading,
     isError,
   } = useGetAllSlotsQuery(undefined);
-  console.log(slotsData);
   const [deleteSingleService] = useDeleteSingleServiceMutation();
 
   useEffect(() => {

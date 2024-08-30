@@ -16,6 +16,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import ManageServices from "../pages/ManageServices/ManageServices";
 import ManageSlots from "../pages/ManageSlots/ManageSlots";
+import ManageUsers from "../pages/ManageUsers/ManageUsers";
 import MyBookings from "../pages/MyBookings/MyBookings";
 import Team from "../pages/OurTeam/OurTeam";
 import ServiceDetails from "../pages/Services/ServiceDetails";
@@ -148,6 +149,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageSlots />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
           </AdminRoute>
         ),
       },
