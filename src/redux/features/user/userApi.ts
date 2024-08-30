@@ -8,34 +8,6 @@ const userApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
-    getAllUsers: builder.query({
-      query: () => {
-        return {
-          url: `/users`,
-          method: "GET",
-        };
-      },
-      providesTags: ["users"],
-    }),
-    updateUserRole: builder.mutation({
-      query: (data) => {
-        return {
-          url: `/users`,
-          method: "PUT",
-          body: data,
-        };
-      },
-      invalidatesTags: ["users"],
-    }),
-    deleteUser: builder.mutation({
-      query: (id) => {
-        return {
-          url: `/users/${id}`,
-          method: "DELETE",
-        };
-      },
-      invalidatesTags: ["users"],
-    }),
   }),
 });
 
