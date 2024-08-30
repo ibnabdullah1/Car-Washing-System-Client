@@ -1,9 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { FaStarOfLife } from "react-icons/fa6";
 import Rating from "react-rating";
 import { useSelector } from "react-redux";
-import StarRating from "../../Components/StarRating/StarRating";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import {
   useAddReviewMutation,
@@ -146,47 +144,6 @@ const ReviewFrom = () => {
                 </div>
               </div>
             ))}
-          </div>
-          <div>
-            <div className="p-6 sticky top-14 bg-gray-100 rounded-md ">
-              <h2 className="px-2 mb-6 text-2xl font-semibold text-left text-gray-600 ">
-                Leave a comment
-              </h2>
-              <form onSubmit={handleAddReview} action="" className="">
-                <div className="px-2 mb-6">
-                  <label
-                    htmlFor="rating"
-                    className="mb-2 font-medium text-gray-700  flex "
-                  >
-                    Rating
-                    <span className="text-red-600 text-[8px]">
-                      <FaStarOfLife />
-                    </span>
-                  </label>
-                  <StarRating maxStars={5} onChange={handleStarChange} />
-                </div>
-                <div className="px-2 mb-6">
-                  <label
-                    htmlFor="message"
-                    className="block mb-2 font-medium text-gray-700 "
-                  >
-                    Your review *
-                  </label>
-                  <textarea
-                    name="review"
-                    placeholder="write a review"
-                    required
-                    rows={3}
-                    className="border outline-none bg-transparent focus:border-primary placeholder:text-sm px-4 py-[7px] rounded w-full"
-                  ></textarea>
-                </div>
-                <div className="px-2">
-                  <button className="px-4 py-2 font-medium text-gray-100 bg-blue rounded shadow hover:bg-primary duration-300">
-                    Submit Review
-                  </button>
-                </div>
-              </form>
-            </div>
           </div>
         </div>
       </div>
