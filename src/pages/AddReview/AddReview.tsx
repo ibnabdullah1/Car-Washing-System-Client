@@ -4,13 +4,20 @@ import { FaStarOfLife } from "react-icons/fa6";
 import Rating from "react-rating";
 import { useSelector } from "react-redux";
 import StarRating from "../../Components/StarRating/StarRating";
-import { reviews } from "../../data/dummyData";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import {
+  useAddReviewMutation,
+  useGetAllReviewsQuery,
+} from "../../redux/features/review/reviewApi";
 
 const ReviewFrom = () => {
   const user = useSelector(selectCurrentUser);
   const [rate, setRate] = useState(0);
-
+  const [addReview] = useAddReviewMutation();
+  const { data: reviewsData, isLoading } = useGetAllReviewsQuery(undefined);
+  if (isLoading) {
+    return;
+  }
   const date = new Date();
   const formattedDate = date.toISOString().split("T")[0];
   const handleStarChange = (starValue: any) => {
@@ -27,18 +34,21 @@ const ReviewFrom = () => {
       const date = formattedDate;
       const reviewData = { name, title, rating, image, review, date };
 
-      console.log(reviewData);
+      const res = await addReview(reviewData).unwrap();
+      if (res.success) {
+        toast.success(res.message);
+      }
     } else {
       toast.error("Please select a rating");
     }
     handleStarChange(0);
   };
   return (
-    <section className="py-10 bg-gray-50 ">
+    <section className=" bg-gray-50 ">
       <div className="max-w-6xl px-4 py-6 mx-auto lg:py-4 md:px-6">
         <div className="lg:grid-cols-[50%,1fr] grid grid-cols-1 gap-6">
           <div>
-            {reviews.map((review: any) => (
+            {reviewsData?.data?.map((review: any) => (
               <div
                 key={review._id}
                 className="p-6 mb-6 bg-gray-100 rounded-md lg:p-6 "
@@ -166,16 +176,13 @@ const ReviewFrom = () => {
                     name="review"
                     placeholder="write a review"
                     required
-                    rows={5}
-                    defaultValue={
-                      "Happy with the car wash service. The cleaning was thorough, and the team was helpful when I had a question about the service."
-                    }
+                    rows={3}
                     className="border outline-none bg-transparent focus:border-primary placeholder:text-sm px-4 py-[7px] rounded w-full"
                   ></textarea>
                 </div>
                 <div className="px-2">
                   <button className="px-4 py-2 font-medium text-gray-100 bg-blue rounded shadow hover:bg-primary duration-300">
-                    Submit Comment
+                    Submit Review
                   </button>
                 </div>
               </form>
