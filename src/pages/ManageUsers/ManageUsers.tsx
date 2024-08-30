@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import Loader from "../../Components/Common/Loader";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import {
@@ -33,6 +34,22 @@ const ManageUsers = () => {
     } catch (error) {
       toast.error("Something went wrong");
     }
+  };
+
+  const handleDelete = (user: any) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteUser(user._id);
+      }
+    });
   };
 
   return (
