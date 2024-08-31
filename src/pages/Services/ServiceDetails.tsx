@@ -16,18 +16,20 @@ import { useGetSingleServiceQuery } from "../../redux/features/service/serviceAp
 import { TService } from "../../types/global";
 
 const ServiceDetails = () => {
-  const { id: serviceId } = useParams();
+  const { id } = useParams();
 
   const { data: service, isLoading: isServiceLoading } =
-    useGetSingleServiceQuery(serviceId);
+    useGetSingleServiceQuery(id);
 
   if (isServiceLoading) {
     return <Loader />;
   }
 
-  if (!service) {
+  if (!service?.data) {
     return <p>No service data found.</p>;
   }
+
+  const serviceData = service.data as TService;
 
   const { name, image, _id, reviewsCollection } = service.data as TService;
 
@@ -38,7 +40,7 @@ const ServiceDetails = () => {
         subLocation={"Services"}
       />
       <div className="p-5 max-w-7xl mx-auto">
-        <AvailableSlotOverview service={service.data} serviceId={serviceId} />
+        <AvailableSlotOverview service={serviceData} serviceId={id} />
         <ServiceImages image={image} />
 
         <div className="lg:grid lg:grid-cols-3 mt-4 gap-4 space-y-4 lg:space-y-0">

@@ -40,7 +40,7 @@ const Login = () => {
         setLoading(true);
         navigate(from, { replace: true });
       }
-    } catch (err) {
+    } catch (err: any) {
       setPasswordError(err?.data?.message);
     } finally {
       setLoading(false);

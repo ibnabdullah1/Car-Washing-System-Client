@@ -2,15 +2,15 @@ import { useState } from "react";
 import { GoStarFill } from "react-icons/go";
 import { TbReload } from "react-icons/tb";
 
-const StarRating = ({ maxStars, onChange }) => {
+const StarRating = ({ maxStars, onChange }: any) => {
   const [selectedStars, setSelectedStars] = useState(0);
 
-  const handleStarClick = (starValue) => {
+  const handleStarClick = (starValue: any) => {
     setSelectedStars(starValue);
     onChange(starValue);
   };
 
-  const handleReloadClick = (e) => {
+  const handleReloadClick = (e: any) => {
     e.preventDefault();
     setSelectedStars(0);
     onChange(0);

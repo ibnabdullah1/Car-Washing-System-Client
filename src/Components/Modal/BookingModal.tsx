@@ -85,11 +85,13 @@ const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
                     <option value="" disabled>
                       Select a brand
                     </option>
-                    {Object.keys(vehiclesData[vehicleType]).map((brand) => (
-                      <option key={brand} value={brand}>
-                        {brand}
-                      </option>
-                    ))}
+                    {Object.keys(vehiclesData[vehicleType]).map(
+                      (brand: any) => (
+                        <option key={brand} value={brand}>
+                          {brand}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
               </div>

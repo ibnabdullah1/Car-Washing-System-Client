@@ -9,7 +9,20 @@ import { useGetAvailableAllSlotsQuery } from "../../redux/features/slot/slotApi"
 import { TSlot } from "../../types/global";
 import BookingModal from "../Modal/BookingModal";
 
-const AvailableSlotOverview = ({ service, serviceId }: any) => {
+interface AvailableSlotOverviewProps {
+  service: {
+    name: string;
+    description: string;
+    duration: number;
+    price: number;
+  };
+  serviceId: any;
+}
+
+const AvailableSlotOverview = ({
+  service,
+  serviceId,
+}: AvailableSlotOverviewProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { name, description, duration, price } = service;
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
@@ -63,9 +76,11 @@ const AvailableSlotOverview = ({ service, serviceId }: any) => {
           <p className="text-gray-400">Available Slots:</p>
           {isSlotLoading ? (
             "Processing"
-          ) : slotsData && slotsData?.data?.length > 0 ? (
+          ) : slotsData &&
+            Array.isArray(slotsData?.data) &&
+            slotsData?.data.length > 0 ? (
             <div className="flex items-center flex-wrap gap-3">
-              {slotsData?.data?.map((slot: TSlot) => (
+              {slotsData.data.map((slot: TSlot) => (
                 <button
                   key={slot._id}
                   className={`slot-button text-xs px-3 py-[6px] rounded-full ${

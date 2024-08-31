@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BiMinus, BiPlus } from "react-icons/bi";
 
-const SingleFaq = ({ question, response }) => {
+const SingleFaq = ({ question, response }: any) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
 

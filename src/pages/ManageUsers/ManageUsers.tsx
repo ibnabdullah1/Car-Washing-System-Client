@@ -6,21 +6,16 @@ import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
-  useGetUserQuery,
   useUpdateUserRoleMutation,
 } from "../../redux/features/user/userApi";
 const ManageUsers = () => {
   const [userRoleUpdate] = useUpdateUserRoleMutation();
   const [deleteUser] = useDeleteUserMutation();
-  let role;
+
   const { data: users, isLoading: isUserLoading } =
     useGetAllUsersQuery(undefined);
-  const { userEmail }: any = useSelector(selectCurrentUser);
-  const { data: currentUser, isLoading } = useGetUserQuery(userEmail);
-  if (isLoading) {
-    return;
-  }
-  role = currentUser?.data?.role;
+  const { role }: any = useSelector(selectCurrentUser);
+
   if (isUserLoading) {
     return <Loader />;
   }

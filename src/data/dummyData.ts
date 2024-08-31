@@ -1,3 +1,5 @@
+import { VehiclesData } from "../types/global";
+
 export const reviews = [
   {
     _id: "65bc6cb184f8f11afa043cdc",
@@ -193,7 +195,7 @@ export const teamMembers = [
   },
 ];
 
-export const vehiclesData = {
+export const vehiclesData: VehiclesData = {
   car: {
     Toyota: ["Camry", "Corolla", "Yaris", "RAV4", "Prius"],
     Honda: ["Civic", "Accord", "Fit", "CR-V", "Pilot"],

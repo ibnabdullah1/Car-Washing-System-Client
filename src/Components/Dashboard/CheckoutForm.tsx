@@ -66,9 +66,7 @@ const CheckoutForm = () => {
 
     if (error) {
       toast.error("Payment Method Error");
-    } else {
     }
-
     // Confirm payment
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {

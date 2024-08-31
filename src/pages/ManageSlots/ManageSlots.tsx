@@ -10,10 +10,11 @@ import {
   useDeleteSlotMutation,
   useGetAllSlotsQuery,
 } from "../../redux/features/slot/slotApi";
+import { TSlot } from "../../types/global";
 
 const ManageSlots = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [slots, setSlots] = useState<any[]>([]);
+  const [slots, setSlots] = useState<TSlot[]>([]);
   const itemsPerPage = 10;
   const {
     data: slotsData,
@@ -22,7 +23,7 @@ const ManageSlots = () => {
   } = useGetAllSlotsQuery(undefined);
   const [deleteSlot] = useDeleteSlotMutation();
   useEffect(() => {
-    if (slotsData?.data) {
+    if (slotsData?.data && Array.isArray(slotsData.data)) {
       setSlots(slotsData.data);
     }
   }, [slotsData]);
@@ -104,7 +105,7 @@ const ManageSlots = () => {
               </tr>
             </thead>
             <tbody>
-              {itemsToShow?.map((item, i) => (
+              {itemsToShow?.map((item: any, i: any) => (
                 <tr key={i}>
                   <td className="border-b border-[#eee] py-5 ">
                     <input type="checkbox" name="" id="" />

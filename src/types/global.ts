@@ -38,6 +38,16 @@ export interface TSlot {
   endTime: string;
   isBooked?: string;
 }
+export interface TReview {
+  _id: string;
+  name: string;
+  title: string;
+  rating: number;
+  image: string;
+  review: string;
+  date: string;
+}
+
 export interface TService {
   _id: string;
   name: string;
@@ -48,3 +58,12 @@ export interface TService {
   isDeleted: boolean;
   reviewsCollection?: [];
 }
+
+export interface VehiclesData {
+  [vehicleType: string]: {
+    [brand: string]: string[];
+  };
+}
+
+export type VehicleType = keyof VehiclesData;
+export type BrandType<T extends VehicleType> = keyof VehiclesData[T];
