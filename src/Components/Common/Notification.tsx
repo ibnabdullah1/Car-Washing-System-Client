@@ -62,7 +62,7 @@ const Notification = () => {
                     <h3>{name}</h3>
                     <p className="text-[12px]">{timestamp}</p>
                   </div>
-                  <p className="text-[12px]">{message.slice(0, 20)}</p>
+                  <p className="text-[12px]">{message?.slice(0, 20)}</p>
                 </div>
               </div>
             ))}

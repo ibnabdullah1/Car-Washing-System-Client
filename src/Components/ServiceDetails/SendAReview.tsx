@@ -73,7 +73,7 @@ const SendAReview = ({ id }: any) => {
     <div className="h-min bg-gray-100 px-6 py-10 space-y-6 rounded">
       <p className="text-xl font-semibold my-2">Add A Review</p>
       <form onSubmit={handleSubmitReview} className="space-y-5">
-        <StarRating maxStars={5} onChange={handleStarChange} />
+        <StarRating onChange={handleStarChange} />
 
         <div className="flex justify-between items-center gap-3 my-5">
           <div className="w-full">

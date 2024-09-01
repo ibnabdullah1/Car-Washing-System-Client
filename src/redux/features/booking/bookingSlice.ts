@@ -35,11 +35,9 @@ const bookingSlice = createSlice({
     },
     removeFromBooking(state) {
       state.item = null;
-      toast.success("Booking removed");
     },
     clearBooking(state) {
       state.item = null;
-      toast.success("All bookings cleared");
     },
   },
 });

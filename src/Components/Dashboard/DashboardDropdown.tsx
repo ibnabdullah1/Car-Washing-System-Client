@@ -40,7 +40,7 @@ const DashboardDropdown = () => {
             />
             <div className="absolute flex md:hidden top-[2px] right-[-1px] w-2 h-2 rounded-full bg-green-500" />
             <p className="md:flex hidden font-semibold text-sm text-[#333333] ">
-              {user?.name.slice(0, 10)}.
+              {user?.name?.slice(0, 10)}.
             </p>
             {isOpen ? (
               <IoIosArrowUp className="ml-1 text-gray-600 md:flex hidden " />

@@ -102,14 +102,14 @@ The Car Wash Booking System is a user-friendly web application designed to strea
 2. Install dependencies:
 
    ```bash
-   bun install
+   npm install
    ```
 
 3. Set up the environment variables (see [Environment Variables](#environment-variables)).
 
 4. Run the application:
    ```bash
-   bun run dev
+   npm run dev
    ```
 
 ## Environment Variables

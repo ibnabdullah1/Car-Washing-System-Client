@@ -17,6 +17,16 @@ const userApi = baseApi.injectEndpoints({
       },
       providesTags: ["users"],
     }),
+    getSingleUser: builder.query({
+      query: ({ email }) => {
+        console.log(email);
+        return {
+          url: `/users/${email}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["users"],
+    }),
     updateUserRole: builder.mutation({
       query: (data) => {
         return {
@@ -44,4 +54,5 @@ export const {
   useUpdateUserRoleMutation,
   useGetAllUsersQuery,
   useDeleteUserMutation,
+  useGetSingleUserQuery,
 } = userApi;

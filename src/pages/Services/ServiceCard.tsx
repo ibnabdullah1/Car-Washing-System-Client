@@ -28,7 +28,7 @@ const ServiceCard: React.FC<TService> = ({
         </h3>
         <p className="  text-gray-600">
           {description.length > 40
-            ? description.slice(0, 40) + " more..."
+            ? description?.slice(0, 40) + " more..."
             : description}
         </p>
 

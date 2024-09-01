@@ -13,7 +13,6 @@ const bookingApi = baseApi.injectEndpoints({
     }),
     addBooking: builder.mutation({
       query: (orderData) => {
-        console.log(orderData);
         return {
           url: "/bookings",
           method: "POST",

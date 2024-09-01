@@ -23,3 +23,13 @@
 .icon-box {
   @apply grid flex-shrink-0 rounded-full w-9 h-9 place-items-center hover:bg-slate-200  sm:cursor-pointer;
 }
+.back-to-top-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.back-to-top-btn.active {
+  opacity: 1;
+  visibility: visible;
+}

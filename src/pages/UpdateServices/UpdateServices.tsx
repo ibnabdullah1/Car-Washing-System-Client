@@ -1,15 +1,21 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../Components/Common/Loader";
-import { useGetSingleServiceQuery } from "../../redux/features/service/serviceApi";
+import {
+  useGetSingleServiceQuery,
+  useUpdateServiceMutation,
+} from "../../redux/features/service/serviceApi";
 import { TService } from "../../types/global";
 import { imageUpload } from "../../utils/utilis";
 
 const UpdateService = () => {
   const { id: serviceId } = useParams();
-
+  const [loading, setLoading] = useState(false);
+  const [addUpdate] = useUpdateServiceMutation();
   const { data: service, isLoading: isServiceLoading } =
     useGetSingleServiceQuery(serviceId);
-
+  const navigate = useNavigate();
   if (isServiceLoading) {
     return <Loader />;
   }
@@ -21,31 +27,39 @@ const UpdateService = () => {
   const { name, price, duration } = service.data as TService;
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      const form = e.target;
+      const name = form.name.value;
+      const price = parseInt(form.price.value);
+      const duration = parseInt(form.duration.value);
+      const image = form.image.files[0];
 
-    const form = e.target;
-    const name = form.name.value;
-    const price = parseInt(form.price.value);
-    const duration = parseInt(form.duration.value);
-    const image = form.image.files[0];
+      if (!image) {
+        throw new Error("No image selected");
+      }
 
-    if (!image) {
-      throw new Error("No image selected");
+      const image_url = await imageUpload(image);
+
+      const serviceData = {
+        name,
+        duration,
+        price,
+        image: image_url?.data?.display_url,
+        isDeleted: false,
+      };
+      const data = { id: serviceId, data: serviceData };
+      const res = await addUpdate(data).unwrap();
+      if (res.success) {
+        toast.success(res.message);
+        form.reset();
+        setLoading(false);
+        navigate("/dashboard/manage-services");
+      }
+    } catch (error: any) {
+      setLoading(false);
+      toast.error(error.message);
     }
-
-    const image_url = await imageUpload(image);
-    console.log(image_url);
-
-    const serviceData = {
-      name,
-      duration,
-      price,
-      //   image: image_url?.data?.display_url,
-      isDeleted: false,
-    };
-    console.log(serviceData);
-
-    // Reset form fields after successful submission
-    // form.reset();
   };
 
   const cssClass =
@@ -106,9 +120,10 @@ const UpdateService = () => {
 
         <button
           type="submit"
+          disabled={loading}
           className="bg-primary text-white text-xs mt-4 p-2 rounded"
         >
-          Submit Product
+          {loading ? "Updating.." : "Service Update"}
         </button>
       </form>
     </div>

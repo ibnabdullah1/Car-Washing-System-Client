@@ -2,9 +2,8 @@ import { useState } from "react";
 import { GoStarFill } from "react-icons/go";
 import { TbReload } from "react-icons/tb";
 
-const StarRating = ({ maxStars, onChange }: any) => {
+const StarRating = ({ onChange }: any) => {
   const [selectedStars, setSelectedStars] = useState(0);
-
   const handleStarClick = (starValue: any) => {
     setSelectedStars(starValue);
     onChange(starValue);
@@ -22,7 +21,7 @@ const StarRating = ({ maxStars, onChange }: any) => {
         <TbReload className="hover:text-primary" />
       </button>
 
-      {[...Array(maxStars)].map((_, index) => (
+      {[...Array(5)].map((_, index) => (
         <div
           key={index + 1}
           className={`cursor-pointer text-lg ${

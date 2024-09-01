@@ -4,7 +4,7 @@ import LinkBanner from "../../Components/LInkBanner/LinkBanner";
 const ContactUs = () => {
   return (
     <>
-      <LinkBanner ActiveLocation={"Contact-Uss"} subLocation={undefined} />
+      <LinkBanner ActiveLocation={"Contact-Us"} subLocation={undefined} />
       <section className="text-gray-600 font-questrial relative px-5 py-14">
         <h1 className="heading text-center">Contact Us</h1>
         <div className="container  mx-auto flex sm:flex-nowrap flex-wrap">

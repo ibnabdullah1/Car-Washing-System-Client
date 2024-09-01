@@ -24,9 +24,8 @@ const Services = () => {
   );
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const itemsToShow = filteredServices.slice(startIndex, endIndex);
+  const itemsToShow = filteredServices?.slice(startIndex, endIndex);
   const handlePageClick = (page: number) => {
-    console.log(page);
     setCurrentPage(page);
   };
 

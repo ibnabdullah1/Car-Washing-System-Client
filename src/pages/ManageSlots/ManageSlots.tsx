@@ -73,33 +73,33 @@ const ManageSlots = () => {
   return (
     <div className="md:px-5">
       <h2 className="heading text-center my-5">Manage Slots</h2>
-      <div className="border border-[#1c445630] rounded">
-        <div className="max-w-[900px] mx-auto overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary px-3">
+      <div className=" border border-[#1c445630] rounded">
+        <div className="max-w-[900px] mx-auto overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary ">
           <table className="w-full table-auto mb-10">
-            <thead>
+            <thead className="text-left bg-primary">
               <tr className="bg-gray-2 text-left dark:bg-meta-4 border-b">
-                <th className="px-3 py-5 text-left">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   <input type="checkbox" name="" id="" />
                 </th>
-                <th className="min-w-[80px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Image
                 </th>
-                <th className="min-w-[140px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Service Name
                 </th>
-                <th className="min-w-[60px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Price
                 </th>
-                <th className="min-w-[60px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Duration
                 </th>
-                <th className="min-w-[100px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Date
                 </th>
-                <th className="min-w-[100px] uppercase py-4 font-medium text-secondary">
+                <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">
                   Time
                 </th>
-                <th className="py-4 font-medium text-center uppercase text-secondary">
+                <th className="px-6 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -107,42 +107,32 @@ const ManageSlots = () => {
             <tbody>
               {itemsToShow?.map((item: any, i: any) => (
                 <tr key={i}>
-                  <td className="border-b border-[#eee] py-5 ">
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
                     <input type="checkbox" name="" id="" />
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
                     <img
-                      className="size-10 rounded"
+                      className="w-14 h-8 rounded"
                       src={item.service?.image}
                       alt={item.service?.name}
                     />
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
-                    <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 font-medium text-success">
-                      {item.service?.name}
-                    </p>
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                    {item.service?.name}
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
-                    <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 font-medium text-success">
-                      ${item.service?.price}.00
-                    </p>
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                    ${item.service?.price}.00
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
-                    <p className="inline-flex rounded-full bg-opacity-10 py-1 text-center font-medium text-success">
-                      {item.service?.duration} Mins
-                    </p>
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                    {item.service?.duration} Mins
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
-                    <p className="inline-flex rounded-full bg-opacity-10 py-1 text-center font-medium text-success">
-                      {item.date}
-                    </p>
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                    {item.date}
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
-                    <p className="inline-flex rounded-full bg-opacity-10 py-1 text-center font-medium text-success">
-                      {item.startTime} - {item.endTime}
-                    </p>
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
+                    {item.startTime} - {item.endTime}
                   </td>
-                  <td className="border-b border-[#eee] py-5 ">
+                  <td className="px-6 py-3 text-left text-xs font-medium  tracking-wider">
                     <div className="flex gap-2 items-center justify-center">
                       <button
                         disabled={item.isBooked === "booked"}

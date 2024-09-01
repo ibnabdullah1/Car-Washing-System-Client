@@ -11,7 +11,7 @@ const FeaturedService = () => {
   const { data: servicesData, isLoading } = useGetAllServicesQuery(undefined);
   return (
     <div className="fixed-w FeaturedService h-min  rounded py-14">
-      <p className="heading">Featured Properties</p>
+      <p className="heading">Featured Service</p>
       <div>
         <Swiper
           freeMode={true}

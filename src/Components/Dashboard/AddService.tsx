@@ -1,7 +1,13 @@
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useAddServiceMutation } from "../../redux/features/service/serviceApi";
 import { imageUpload } from "../../utils/utilis";
 
 const AddService = () => {
+  const [addService] = useAddServiceMutation();
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const form = e.target;
@@ -20,12 +26,15 @@ const AddService = () => {
         image: image_url?.data?.display_url,
         isDeleted: false,
       };
-      console.log(serviceData);
-
-      // Reset form fields after successful submission
-      // form.reset();
-    } catch (error) {
-      console.error("Image upload failed:", error);
+      const res = await addService(serviceData).unwrap();
+      if (res.success) {
+        toast.success(res.message);
+        form.reset();
+        setLoading(false);
+      }
+    } catch (error: any) {
+      setLoading(false);
+      toast.error(error.message);
     }
   };
 
@@ -96,9 +105,10 @@ const AddService = () => {
 
         <button
           type="submit"
+          disabled={loading}
           className="bg-primary text-white text-xs mt-4 p-2 rounded"
         >
-          Submit Product
+          {loading ? "Adding.." : "Submit Product"}
         </button>
       </form>
     </div>

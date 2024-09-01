@@ -66,7 +66,7 @@ const BookingModal = ({ isOpen, handleBookService, setIsOpen }: any) => {
                   >
                     {Object.keys(vehiclesData)?.map((type) => (
                       <option key={type} value={type}>
-                        {type.charAt(0).toUpperCase() + type.slice(1)}
+                        {type?.charAt(0)?.toUpperCase() + type?.slice(1)}
                       </option>
                     ))}
                   </select>

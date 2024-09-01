@@ -8,7 +8,7 @@ const ReviewsCard = ({ review }: any) => {
         <BsQuote className="text-5xl text-[#1E69B861]" />
         <p className="mb-4 text-sm font-normal leading-relaxed tracking-wide text-gray-400">
           {review?.review.length > 170
-            ? `${review?.review.slice(0, 200)}...`
+            ? `${review?.review?.slice(0, 200)}...`
             : review?.review}
         </p>
       </div>

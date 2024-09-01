@@ -12,7 +12,7 @@ const FeaturedAdsService = () => {
   const { data: servicesData, isLoading } = useGetAllServicesQuery(undefined);
   return (
     <div className=" FeaturedAdsService h-min  rounded mt-10">
-      <p className="text-xl font-semibold my-4">Featured Properties</p>
+      <p className="text-xl font-semibold my-4">Featured Services</p>
       <div>
         <Swiper
           freeMode={true}

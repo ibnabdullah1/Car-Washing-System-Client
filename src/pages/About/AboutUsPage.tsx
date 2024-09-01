@@ -1,6 +1,6 @@
+import FeaturedService from "../../Components/FeaturedService/FeaturedService";
 import LinkBanner from "../../Components/LInkBanner/LinkBanner";
 import Reviews from "../Reviews/Reviews";
-import Services from "../Services/Services";
 import AboutUs from "./About";
 
 const AboutUsPage = () => {
@@ -8,7 +8,7 @@ const AboutUsPage = () => {
     <div>
       <LinkBanner ActiveLocation={"About Us"} subLocation={undefined} />
       <AboutUs />
-      <Services />
+      <FeaturedService />
       <Reviews />
     </div>
   );

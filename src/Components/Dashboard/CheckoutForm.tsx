@@ -23,6 +23,7 @@ const CheckoutForm = () => {
     vehicleModel,
     servicePrice,
   }: any = useSelector(currentBookings);
+
   const user = useSelector(selectCurrentUser);
   const [addBooking] = useAddBookingMutation();
   const stripe = useStripe();

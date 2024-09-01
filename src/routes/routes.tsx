@@ -14,6 +14,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import FAQs from "../pages/FAQ/FAQs";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
+import ManageBookings from "../pages/ManageBookings/ManageBookings";
 import ManageServices from "../pages/ManageServices/ManageServices";
 import ManageSlots from "../pages/ManageSlots/ManageSlots";
 import ManageUsers from "../pages/ManageUsers/ManageUsers";
@@ -149,6 +150,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageSlots />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-bookings",
+        element: (
+          <AdminRoute>
+            <ManageBookings />
           </AdminRoute>
         ),
       },

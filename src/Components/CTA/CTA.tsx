@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CTA = () => {
   return (
     <div className="relative overflow-hidden bg-primary">
@@ -118,12 +120,12 @@ const CTA = () => {
           </div>
 
           <div className="mt-8 md:mt-0">
-            <a
-              href="/booking"
+            <Link
+              to="/services"
               className="inline-block px-8 py-4 text-base font-bold text-gray-900 bg-white rounded-lg shadow-md hover:bg-gray-100"
             >
               Book Your Wash Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ const Team = () => {
         </div>
         <div>
           <div className="grid grid-cols-1 gap-3 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-10">
-            {teamMembers.slice(0, 4).map(({ id, name, role, image }) => (
+            {teamMembers?.slice(0, 4).map(({ id, name, role, image }) => (
               <div className=" h-[300px] w-full mb-16 lg:mb-0" key={id}>
                 <img
                   src={image}
