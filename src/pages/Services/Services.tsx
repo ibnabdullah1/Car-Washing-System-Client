@@ -12,19 +12,30 @@ const Services = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [filterTitle, setFilterTitle] = useState("");
   const [sortOption, setSortOption] = useState("");
+  const [priceRange, setPriceRange] = useState<number[]>([0, 200]);
   const itemsPerPage = 6;
 
   if (isLoading) {
     return <Loader />;
   }
+
   const totalItems = servicesData?.data.length;
   const numberOfPages = Math.ceil(totalItems / itemsPerPage);
-  const filteredServices = servicesData?.data.filter((service: TService) =>
-    service?.name?.toLowerCase().includes(filterTitle?.toLowerCase())
-  );
+
+  // Filter services by title and price range
+  const filteredServices = servicesData?.data
+    .filter((service: TService) =>
+      service?.name?.toLowerCase().includes(filterTitle?.toLowerCase())
+    )
+    .filter(
+      (service: TService) =>
+        service.price >= priceRange[0] && service.price <= priceRange[1]
+    );
+
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const itemsToShow = filteredServices?.slice(startIndex, endIndex);
+
   const handlePageClick = (page: number) => {
     setCurrentPage(page);
   };
@@ -38,7 +49,7 @@ const Services = () => {
   };
 
   // Sort services based on user selection
-  const sortedServices = itemsToShow.sort((a: any, b: any) => {
+  const sortedServices = itemsToShow.sort((a: TService, b: TService) => {
     if (sortOption === "priceAsc") return a.price - b.price;
     if (sortOption === "priceDesc") return b.price - a.price;
     if (sortOption === "durationAsc") return a.duration - b.duration;
@@ -56,6 +67,10 @@ const Services = () => {
           filterTitle={filterTitle}
           setSortOption={setSortOption}
           sortOption={sortOption}
+          minPrice={0}
+          maxPrice={200}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -63,6 +78,7 @@ const Services = () => {
             <ServiceCard key={service._id} {...service} />
           ))}
         </div>
+
         {/* Pagination Component */}
         {totalItems > itemsPerPage && (
           <div className="flex-wrap md:flex justify-center py-16 gap-8">
@@ -81,7 +97,7 @@ const Services = () => {
                 aria-label={`${index + 1}`}
                 className={`w-7 h-7 rounded-md text-sm ${
                   currentPage === index
-                    ? " bg-primary shadow shadow-primary text-white"
+                    ? "bg-primary shadow shadow-primary text-white"
                     : "hover:bg-primary/70 hover:text-white"
                 }`}
                 key={index}

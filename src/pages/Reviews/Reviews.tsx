@@ -5,11 +5,18 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { reviews } from "../../data/dummyData";
+import { useGetAllReviewsQuery } from "../../redux/features/review/reviewApi";
+import { TReview } from "../../types/global";
 import "./Review.css";
 import ReviewsCard from "./ReviewsCard";
 
 const Reviews = () => {
+  const { data: reviewsData, isLoading } = useGetAllReviewsQuery(undefined);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  const reviews = Array.isArray(reviewsData?.data) ? reviewsData?.data : [];
   return (
     <div className=" pt-2 lg:px-10 px-10 ">
       <div className=" max-w-7xl mx-auto pt-2 pb-16 ">
@@ -64,8 +71,8 @@ const Reviews = () => {
           modules={[FreeMode, Pagination, Navigation, Autoplay]}
         >
           <div>
-            {reviews.map((review, i) => (
-              <SwiperSlide key={i}>
+            {reviews.map((review: TReview) => (
+              <SwiperSlide key={review._id}>
                 <ReviewsCard review={review} />
               </SwiperSlide>
             ))}
